@@ -44,8 +44,6 @@ h1, h3{
     display: flex;
 }
 .btn{
-    /* height: 29vh;   
-    width: 16vw; */
     height: 250px;
     width: 250px;
     margin: 15px 18px;

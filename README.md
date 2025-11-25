@@ -1,4 +1,4 @@
-###🎮 Simon Says Game
+🎮 Simon Says Game — HTML, CSS & JavaScript
 
 A classic Simon Says memory challenge built with HTML, CSS, and JavaScript.
 Repeat the pattern as it grows longer and test how strong your memory is!

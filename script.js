@@ -2,6 +2,7 @@ let body = document.querySelector('#simon-game');
 let span = document.querySelector("h2 span");
 let h3 = document.querySelector("h3");
 let btns = document.querySelectorAll(".btn");
+let startBtn = document.querySelector("#start");
 
 let started = false;
 let level = 0;
@@ -12,14 +13,28 @@ let colorArr = ['red','green', 'blue', 'yellow'];
 let gameSeq = [];
 let userSeq = [];
 
+function showStartBtn(started) {
+    started ? 
+    startBtn.style.display = "none": 
+    startBtn.style.display = "block";
+}
 
 document.addEventListener("keypress",()=>{
-
     if (!started) {
         started = true;
         levelUp();
         randomFlash();
     }
+    showStartBtn(started);
+});
+
+startBtn.addEventListener("click",()=>{
+    if (!started) {
+        started = true;
+        levelUp();
+        randomFlash();
+    }
+    showStartBtn(started);
 });
 
 function levelUp() {
@@ -83,15 +98,19 @@ function flash(btn) {
 
 function checkHighestScore(levelscore) {
     if(levelscore > localStorage.getItem("highestScore")){
-        localStorage.setItem("highestScore", levelscore);       
+        localStorage.setItem("highestScore", levelscore); 
+        span.innerHTML = `<b>${localStorage.getItem("highestScore")}</b>`;      
     }
 }
 
 function reset() {
-    started = false;
+    started = false;    
+    checkHighestScore(level);
+    showStartBtn(started);
     level = 0;
     gameSeq = [];
     userSeq = [];
+    startBtn.innerHTML = "Replay";
 }
 
 // localStorage.removeItem("highestScore");
